@@ -1,0 +1,42 @@
+# Nama workflow yang akan muncul di tab "Actions" GitHub
+name: Build and Push Docker Image
+
+# Pemicu (trigger) workflow
+# Workflow ini akan berjalan setiap kali ada push ke branch 'main'
+on:
+  push:
+    branches: ["main"]
+
+# Pekerjaan (jobs) yang akan dieksekusi
+jobs:
+  build_and_push:
+    # Menentukan bahwa job ini berjalan di environment Ubuntu terbaru
+    runs-on: ubuntu-latest
+
+    # Langkah-langkah (steps) yang akan dijalankan secara berurutan
+    steps:
+      # Langkah 1: Checkout kode dari repository
+      # Ini akan mengunduh kode Anda ke dalam runner GitHub Actions
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Langkah 2: Login ke Docker Hub
+      # Menggunakan action resmi dari Docker untuk login secara aman
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Langkah 3: Build dan Push Docker image
+      # Menggunakan action yang menggabungkan proses build dan push
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          # Memberitahu action untuk mencari Dockerfile di direktori root
+          context: .
+          # Memberitahu action untuk langsung push setelah build berhasil
+          push: true
+          # Menentukan tag untuk image. Formatnya: username/repo:tag
+          # 'latest' adalah tag yang umum digunakan untuk versi terbaru
+          tags: your-dockerhub-username/portfolio-dena:latest
