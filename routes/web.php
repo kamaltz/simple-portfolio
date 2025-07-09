@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
-    return view('profile');
-});
+Route::get('/', [ProfileController::class, 'index'])->name('profile');
