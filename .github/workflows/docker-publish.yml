@@ -39,4 +39,4 @@ jobs:
           push: true
           # Menentukan tag untuk image. Formatnya: username/repo:tag
           # 'latest' adalah tag yang umum digunakan untuk versi terbaru
-          tags: your-dockerhub-username/portfolio-dena:latest
+          tags: kamaltz/nadhif-porto:newest
