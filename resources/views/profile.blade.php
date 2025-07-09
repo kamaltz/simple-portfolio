@@ -37,7 +37,6 @@
                     <div class="relative inline-block">
                         <img src="https://i.pravatar.cc/200?u=2206090" alt="Dena Kamal D." 
                              class="w-32 h-32 rounded-full mx-auto border-2 border-purple-400/30 shadow-xl">
-                        <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-slate-900"></div>
                     </div>
                 </div>
 
